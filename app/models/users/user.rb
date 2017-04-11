@@ -146,6 +146,21 @@ class User < ActiveRecord::Base
     check_if_current_user && !has_related_assets?
   end
 
+  def self.from_omniauth(access_token)
+    data = access_token.info
+    user = User.where(:username => data["email"]).first
+
+    # Uncomment the section below if you want users to be created if they don't exist
+    unless user
+        user = User.create( username: data["email"],
+           first_name: data["name"],
+           email: data["email"],
+           password: Devise.friendly_token[0,20]
+        )
+    end
+    user
+end
+
   # Suspend newly created user if signup requires an approval.
   #----------------------------------------------------------------------------
   def check_if_needs_approval

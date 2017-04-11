@@ -17,3 +17,4 @@
       = f.submit t(:login)
       #{t :or}
       = link_to t(:forgot_password) << '?', new_password_path
+      = link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path
