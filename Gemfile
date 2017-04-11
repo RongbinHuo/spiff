@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 # Uncomment the database that you have configured in config/database.yml
 # ----------------------------------------------------------------------
 db_drivers = {
-  "mysql" => "mysql2",
-  "sqlite" => "sqlite3",
+  # "mysql" => "mysql2",
+  # "sqlite" => "sqlite3",
   "postgres" => "pg"
 }
 
