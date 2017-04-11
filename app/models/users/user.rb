@@ -71,6 +71,8 @@ class User < ActiveRecord::Base
       .where("opportunities.stage <> 'lost' AND opportunities.stage <> 'won'")
       .select('DISTINCT(users.id), users.*')
   }
+  
+  devise :omniauthable, :omniauth_providers => [:google_oauth2]
 
   acts_as_authentic do |c|
     c.session_class = Authentication

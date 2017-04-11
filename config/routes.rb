@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   resources :comments,       except: [:new, :show]
   resources :emails,         only: [:destroy]
   resources :passwords,      only: [:new, :create, :edit, :update]
+  
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :accounts, id: /\d+/ do
     collection do
